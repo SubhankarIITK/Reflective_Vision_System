@@ -1,0 +1,15 @@
+path: data/processed
+train: images/train
+val: images/val
+test: images/test
+
+nc: 8
+names:
+  0: glass_bottle
+  1: plastic_container
+  2: reflective_surface
+  3: semi_transparent_object
+  4: glass_cup
+  5: plastic_bag
+  6: mirror
+  7: window

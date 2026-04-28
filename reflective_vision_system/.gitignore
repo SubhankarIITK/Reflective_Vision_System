@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Model weights (large files — use Git LFS or download separately)
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.engine
+
+# Data (commit structure only)
+data/raw/*
+data/processed/*
+data/synthetic/*
+data/demo/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/synthetic/.gitkeep
+
+# Outputs
+outputs/images/*
+outputs/videos/*
+outputs/logs/*
+!outputs/images/.gitkeep
+!outputs/videos/.gitkeep
+!outputs/logs/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Ultralytics / YOLO runs
+runs/
+
+# Env vars
+.env
+*.env
+
+# Misc
+*.log
+*.tmp

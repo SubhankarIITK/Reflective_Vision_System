@@ -1,0 +1,68 @@
+project:
+  name: "Smart Vision System for Reflective and Transparent Objects"
+  version: "1.0.0"
+  seed: 42
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  data_synthetic: "data/synthetic"
+  models: "models"
+  outputs: "outputs"
+  logs: "outputs/logs"
+
+data:
+  image_size: [640, 640]
+  batch_size: 16
+  num_workers: 4
+  val_split: 0.15
+  test_split: 0.05
+  classes:
+    - glass_bottle
+    - plastic_container
+    - reflective_surface
+    - semi_transparent_object
+    - glass_cup
+    - plastic_bag
+    - mirror
+    - window
+
+detection:
+  model: "yolov8m.pt"
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+  max_detections: 100
+  epochs: 100
+  imgsz: 640
+  device: "cuda"
+
+segmentation:
+  sam_checkpoint: "models/sam_vit_h_4b8939.pth"
+  sam_model_type: "vit_h"
+  points_per_side: 32
+  pred_iou_thresh: 0.88
+  stability_score_thresh: 0.95
+
+depth:
+  model: "Intel/dpt-large"
+  use_simulated: true
+
+tracking:
+  max_age: 30
+  min_hits: 3
+  iou_threshold: 0.3
+
+fusion:
+  detection_weight: 0.5
+  segmentation_weight: 0.3
+  cv_weight: 0.2
+  min_confidence: 0.3
+
+visualization:
+  show_boxes: true
+  show_masks: true
+  show_ids: true
+  show_depth: false
+  mask_alpha: 0.4
+  box_thickness: 2
+  font_scale: 0.6
